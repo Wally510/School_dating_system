@@ -2,7 +2,7 @@ $(function () {
 	$('#tijiao').on('submit', function (e) {
 		e.preventDefault();
 		$.ajax({
-			url:/* http://10.161.18.188:5000 */"http://10.117.12.68:5000/login",
+			url:/* http://10.161.18.188:5000 */"http://10.151.17.97:5000/login",
 			method:"POST",
 			timeout:0,
 			headers:{
