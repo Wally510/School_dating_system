@@ -1,7 +1,7 @@
 		var username;
 		$(document).ready(function(){
 			$.ajax({
-				url: /*http://10.161.18.188:5000/get_message */"http://10.117.12.68:5000/get_message",
+				url: /*http://10.161.18.188:5000/get_message */"http://10.151.17.97:5000/get_message",
 				method: "GET",
 				timeout: 0,
 				headers: {
@@ -9,7 +9,7 @@
 				},
 				success:function(res){
 					console.log(res);
-					$('#avatarImg').attr('src',`http://10.117.12.68:5000/get_avatar/${document.cookie.substring(11, 23)}.jpg`);
+					$('#avatarImg').attr('src',`http://10.151.17.97:5000/get_avatar/${document.cookie.substring(11, 23)}.jpg`);
 					var yh=res.accounts[0];
 					username=yh;
 					if(yh.name===null){
@@ -150,7 +150,7 @@
 			});
 			$('#baocun').click(function(){
 				$.ajax({
-					url: "http://10.117.12.68:5000/edit_account",
+					url: "http://10.151.17.97:5000/edit_account",
 					method: "POST",
 					timeout: 0,
 					headers: {
@@ -184,7 +184,7 @@
 				if($('#hobbies_price').css('display')==='none'){
 					$('#hobbies_price').css('display','block');
 					$.ajax({
-						url: "http://10.117.12.68:5000/get_hobbies",
+						url: "http://10.151.17.97:5000/get_hobbies",
 						method: "GET",
 						timeout: 0,
 						success:function(res){
@@ -235,7 +235,7 @@
 				console.log(labels);
 				labels=labels+$('#biaoqiannr').val();
 				$.ajax({
-					url: "http://10.117.12.68:5000/edit_labels",
+					url: "http://10.151.17.97:5000/edit_labels",
 					method: "POST",
 					timeout: 0,
 					headers: {
