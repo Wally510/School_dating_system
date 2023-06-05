@@ -7,7 +7,7 @@ var ok=0;
 			var ajaxtj;
 			$.ajax({
 				async:false,
-				url: /* http://10.161.18.188:5000/get_other_user_message */"http://10.117.12.68:5000/get_other_user_message",
+				url: /* http://10.161.18.188:5000/get_other_user_message */"http://10.151.17.97:5000/get_other_user_message",
 				method: "POST",
 				timeout: 0,
 				headers: {
@@ -90,7 +90,7 @@ var ok=0;
 		
 		$(document).ready(function(){
 			$.ajax({
-				url: /*http://10.161.18.188:5000/get_message */"http://10.117.12.68:5000/get_message",
+				url: /*http://10.161.18.188:5000/get_message */"http://10.151.17.97:5000/get_message",
 				method: "GET",
 				timeout: 0,
 				headers: {
@@ -117,7 +117,7 @@ var ok=0;
 			});
 			$.ajax({
 				async:false,
-				url: "http://10.117.12.68:5000/recommend_users",
+				url: "http://10.151.17.97:5000/recommend_users",
 				method: "GET",
 				timeout: 0,
 				headers: {
@@ -160,7 +160,7 @@ var ok=0;
 						}
 					}
 					/* $.ajax({
-						url: "http://10.117.12.68:5000/get_liked_users",
+						url: "http://10.151.17.97:5000/get_liked_users",
 						method: "POST",
 						timeout: 0,
 						headers: {
@@ -226,11 +226,11 @@ var ok=0;
 				var a=$(this).attr('id').substr(-1);
 				var b=Number(a);
 				var yh=tuijianyh[b-1][0];
-				$('#avatarImg').attr('src',`http://10.117.12.68:5000/get_avatar/${yh.j_username}.jpg`);
+				$('#avatarImg').attr('src',`http://10.151.17.97:5000/get_avatar/${yh.j_username}.jpg`);
 				xianshi(yh);
 				$.ajax({
 					async:false,
-					url: "http://10.117.12.68:5000/if_like",
+					url: "http://10.151.17.97:5000/if_like",
 					method: "POST",
 					timeout: 0,
 					headers: {
@@ -260,7 +260,7 @@ var ok=0;
 			
 			$('#sousuoanniu').click(function(){
 				$.ajax({
-					url: "http://10.117.12.68:5000/search_users",
+					url: "http://10.151.17.97:5000/search_users",
 					method: "POST",
 					timeout: 0,
 					headers: {
@@ -345,7 +345,7 @@ var ok=0;
 					$('#xiaiyonghu').css('display','block');
 					$.ajax({
 						async:false,
-						url: "http://10.117.12.68:5000/get_liked_users",
+						url: "http://10.151.17.97:5000/get_liked_users",
 						method: "GET",
 						timeout: 0,
 						headers: {
@@ -403,7 +403,7 @@ var ok=0;
 			    id.onclick=function(){
 					if(ok===0){
 						$.ajax({
-							url: "http://10.117.12.68:5000/save_like",
+							url: "http://10.151.17.97:5000/save_like",
 							method: "POST",
 							timeout: 0,
 							headers: {
@@ -421,7 +421,7 @@ var ok=0;
 						ok=1;
 					}else{
 						$.ajax({
-							url: "http://10.117.12.68:5000/save_like",
+							url: "http://10.151.17.97:5000/save_like",
 							method: "POST",
 							timeout: 0,
 							headers: {
