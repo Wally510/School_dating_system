@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>主页面</title>
+		<style>
+			body{
+				margin: 0;
+				padding: 0;
+				min-width: 100vw;
+				min-height: 100vh;
+			}
+			html::-webkit-scrollbar {
+			    display: none;
+			}
+			#shangdaohang{
+				position: fixed;
+				z-index: 100;
+				top: 0;
+				width: 100%;
+				height: 5%;
+				background-color: #0069d9;
+			}
+			.big_box{
+				position: absolute;
+				display: flex;
+				top: 5%;
+				width: 100%;
+			}
+			#xiaoyuanbeijing{
+				position: absolute;
+				width: 100%;
+				height: 70px;
+				background-image: url(./css/深圳技术大学.png);
+				background-size: cover;
+			}
+			.left_daohang{
+				position: fixed;
+				width: 10%;
+				height: 100vh;
+				min-width: 100px;/* 设置最小宽度防止文字被压缩 */
+				background-color: #ffffff;
+				overflow: auto;
+				
+			}
+			.left_daohang::-webkit-scrollbar {
+			    display: none;
+			}
+			
+			#konge{
+				vertical-align: middle;
+				text-align: center;
+			}
+			
+			.item1{
+				width: 100%;
+				height: 40px;
+				line-height: 80px;
+				display: flex;
+				justify-content: space-between;
+				cursor: pointer;
+			}
+			.item1:hover{
+				background-color: #e8e8e8;
+			}
+			.item1_text{
+				line-height: 40px;
+				width: 200px;
+				font-size: 10px;
+				overflow: hidden;/*超出隐藏*/
+				text-overflow: ellipsis;/*省略号*/
+				white-space: nowrap;/*设置文本不换行*/
+			}
+			.item1_img{
+				width: 150px;
+				height: 39px;
+				line-height: 40px;
+				position: relative;
+				display: inline-block;
+			}
+			.you{width: 30px;
+				height: 30px;
+				float: right;
+				background-size: 100% 100%;
+			}
+			.item1_item2{
+				cursor: pointer;
+				display: none;
+			}
+			.item2{
+				margin:20px auto;
+			}
+			.item2:hover{
+				background-color: #e6e6e6;
+			}
+			.item2_text{
+				font-size: 10px;
+				margin-left: 25%;
+			}
+			
+			.box_kuan{
+				position: fixed;
+				left: 10%;
+				width: 0.5%;
+				min-height: 100vh;
+				background-color: #e7e7e7;
+			}
+			/*右边框*/
+			.content{
+				position: fixed;
+				left: 10.5%;
+				width: 89.5%;
+				min-height: 100vh;
+				background-color: #f7f7f7;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+			}
+			
+			.logo{
+				position: relative;
+				z-index: 10;
+				height: 50px;
+				display: flex;
+			}
+			#sztulogo{
+				width: 40px;
+				height: 50px;
+				position: relative;
+				display: inline-block;
+			}
+			#sztu{
+				width: 23px;
+				height: 25px;
+				position: absolute;
+				top: 8px; 
+				right: 5px;
+			}
+			#xiaoyuan{
+				line-height: 40px;
+				font-size: 15px;
+				color: white;
+				overflow: hidden;/*超出隐藏*/
+				text-overflow: ellipsis;/*省略号*/
+				white-space: nowrap;/*设置文本不换行*/
+			}
+			#touxiang{
+				position: relative;
+				z-index: 10;
+				height: 50px;
+			}
+			.circle {
+			  border-radius: 50%;
+			  width: 40px;
+			  height: 40px;
+			  line-height: 40px;
+			  text-align: center;
+			  color: #ffffff;
+			  background-color: #b6b6b6;
+			}
+			.biaozhi{
+				width: 20px; 
+				height: 20px;
+				position: absolute;
+				top: 10px; 
+				right: 5px;
+			}
+			
+			/*各个页面*/
+			#yonghufankui{
+				position: absolute;
+				top: 50px;
+				left: 15%;
+				width: 80%;
+				height: 600px;
+			    background-color: #fff;
+			    border-radius: 5px;
+			    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+			}
+			#biaoti{
+				position: relative;
+				top: 15px;
+				text-align: center;
+				font-size: 30px;
+			}
+			#fankuineirong{
+				position: relative;
+				top: 40px;
+				width: 100%;
+				height: 500px;
+			}
+			#daohanglan{
+				position: relative;
+				float: left;
+				left: 9%;
+				width: 15%;
+				height: 100%;
+				background-color: #fff;
+				border-radius: 5px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+				background-color:rgba(0, 255, 255, 0.2);
+				/* border: 1px solid black; */
+			}
+			.shiwu{
+				width: 100%;
+				height: 20%;
+				text-align: center;
+				font-size: 25px;
+				line-height: 100px;
+				/* border: 1px solid black; */
+			}
+			.shiwu:hover{
+				background-color: #00ffff;
+			}
+			#neirong{
+				position: relative;
+				float: left;
+				left: 10%;
+				width: 60%;
+				height: 100%;
+				background-color: #fff;
+				border-radius: 5px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+				/* background-color:rgba(255, 0, 0, 0.2); */
+				/* border: 1px solid black; */
+			}
+			#jubaoyonghu,#fankuixinxi{
+				position: relative;
+				top: 5%;
+				left: 10%;
+				width: 80%;
+				height: 96%;
+			}
+			#jubaobiaoti,#fankuibiaoti{
+				position: relative;
+				text-align: center;
+				font-size: 20px;
+			}
+			#jubaoxuehao{
+				position: relative;
+				top: 5%;
+			}
+			#jubaoliyou{
+				position: relative;
+				top: 12%;
+			}
+			#fankuiliyou{
+				position: relative;
+				top: 12%;
+			}
+			.baocunchongzhi{
+				position: relative;
+				top: 20%;
+			}
+			label {
+				display: block;
+			}
+			input,
+			select {
+				width: 95%;
+				padding: 10px;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				font-size: 16px;
+			}
+			button[type="button"] {
+				padding: 10px 20px;
+				background-color: #007bff;
+				color: #fff;
+				border: none;
+				border-radius: 5px;
+				font-size: 16px;
+				cursor: pointer;
+			}
+			button[type="button"]:hover {
+				background-color: #0069d9;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="shangdaohang">
+			<div class="logo">
+				<div id="sztulogo">
+					<img src="img/深圳技术大学logo.png" id="sztu"/>
+				</div>
+				<span id="xiaoyuan">校园交友系统</span>
+			</div>
+		</div>
+		<div id="beijing"></div>
+		<div class="big_box">
+			<div class="left_daohang">
+				<div id="xiaoyuanbeijing"></div>
+				<div class="logo"></div>
+				<div id="touxiang">
+					<div class="circle" style="margin: auto; background-color: #aaaaff;"></div>
+				</div>
+				<div id="konge">
+					<div id="yonghuming" style="font-size: 20px;">无</div>
+					<div id="yonghuxuehao" style="font-size: 10px;color: #55aaff;">无</div>
+				</div>
+				<div style="width: 100%;height: 30px;"></div>
+				<hr style="border: none;height: 1px; background: #55aaff;"/>
+				<!-- 第一块：一级标题1 -->
+				<div class="item1" name='1'>
+					<div class="item1_img1 item1_img" >
+						<img src="img/主页.png" class="biaozhi"/>
+					</div>
+					<span class="item1_text">主页</span>
+					<div class="you item1_img"></div>
+				</div>
+				<div class="item1_item2" >
+					
+				</div>
+				
+			<!-- 第二块：一级标题2 -->
+				<div class="item1">
+					<div class="item1_img2 item1_img">
+						<img src="img/个人信息.png" class="biaozhi"/>
+					</div>
+					<span class="item1_text">个人信息</span>
+					<div class="you item1_img"></div>
+				</div>
+				<div class="item1_item2">
+					
+				</div>
+				
+				<!-- 第三块：一级标题3 -->
+				<div class="item1">
+					<div class="item1_img3 item1_img">
+						<img src="img/私信.png" class="biaozhi"/>
+					</div>
+					<span class="item1_text">私信</span>
+					<div class="you item1_img"></div>
+				</div>
+				<div class="item1_item2">
+					
+				</div>
+				
+				<!-- 第三块：一级标题3 -->
+				<div class="item1">
+					<div class="item1_img3 item1_img">
+						<img src="img/设置.png" class="biaozhi"/>
+					</div>
+					<span class="item1_text">设置</span>
+					<div class="you item1_img"></div>
+				</div>
+				<div class="item1_item2">
+					<div class="item2">
+						<span class="item2_text">用户反馈</span>
+					</div>
+					<div class="item2">
+						<span class="item2_text">退出</span>
+					</div>
+				</div>
+			</div>
+			<div class="box_kuan"></div>
+			<div class="content"></div>
+			
+			<div id="yonghufankui">
+				<div id="biaoti">用户反馈</div>
+				<div id="fankuineirong">
+					<div id="daohanglan">
+						<label class="shiwu">举报用户</label>
+						<label class="shiwu">反馈信息</label>
+					</div>
+					<div id="neirong">
+						<div id="jubaoyonghu" style="display: block;">
+							<div id="jubaobiaoti">举报用户</div>
+							<div id="jubaoxuehao">
+								<label for="name">要举报的人的学号：</label>
+								<input type="text" id="j_username" name="j_username">
+							</div>
+							<div id="jubaoliyou">
+								<label for="introduction">举报原因：</label>
+								<textarea id="introduction1" name="introduction" rows="10" cols="80"></textarea>
+							</div>
+							<div class="baocunchongzhi">
+								<button type="button" class="baocun">发送</button>
+								<button type="button" class="chongzhi" style="float: right;">重置</button>
+							</div>
+						</div>
+						<div id="fankuixinxi" style="display: none;">
+							<div id="fankuibiaoti">反馈信息</div>
+							<div id="fankuiliyou">
+								<label for="introduction">信息填写：</label>
+								<textarea id="introduction2" name="introduction" rows="14" cols="80"></textarea>
+							</div>
+							<div class="baocunchongzhi">
+								<button type="button" class="baocun">发送</button>
+								<button type="button" class="chongzhi" style="float: right;">重置</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</body>
+	<script src="js/jquery-1.11.3.js"></script>
+	<script>
+		var username;
+		var jiekou=["http://10.161.5.8:5000","http://10.117.12.68:5000","http://10.151.17.97:5000","http://10.161.41.78:5000","http://10.161.14.216:5000"];
+		var jieI=0;
+		$(document).ready(function(){
+			$.ajax({
+				/* async:false, */
+				url: /*http://10.161.18.188:5000/get_message */`${jiekou[jieI]}/get_message`,
+				method: "GET",
+				timeout: 0,
+				headers: {
+					"Authorization": document.cookie.substring(11, 23)
+				},
+				success:function(res){
+					console.log(res);
+					var yh=res.accounts[0];
+					username=yh;
+					if(yh.name===null){
+						$('#yonghuming').text("无");
+					}else{
+						$('#yonghuming').text(yh.name);
+						$('#touxiang .circle').text(yh.name[0]);
+					}
+					if(yh.j_username===null){
+						$('#yonghuxuehao').text("无");
+					}else{
+						$('#yonghuxuehao').text(yh.j_username);
+					}
+				},
+				error:function () {
+					
+				}
+			});
+			$('.baocun').click(function(){
+				var reported_username="";
+				var report_info;
+				var itype;
+				if($('#jubaoyonghu').css('display')==='block'){
+					reported_username=$('#j_username').val();
+					report_info=$('#introduction1').val();
+					itype='举报';
+				}
+				if($('#fankuixinxi').css('display')==='block'){
+					report_info=$('#introduction2').val();
+					itype='反馈';
+				}
+				$.ajax({
+					url:`${jiekou[jieI]}/save_report`,
+					method:"POST",
+					timeout:0,
+					headers:{
+						"Content-Type": "application/json",
+						"Authorization": document.cookie.substring(11, 23)
+					},
+					data:JSON.stringify({
+						"reported_username":reported_username,
+						"report_info":report_info,
+						"itype":itype
+					}),
+					success:function(res){
+						console.log(res);
+						window.location.href = "feedback.html";
+					}
+				});
+			});
+			$('.chongzhi').click(function(){
+				if($('#jubaoyonghu').css('display')==='block'){
+					$('#j_username').val("");
+					$('#introduction1').val("");
+				}
+				if($('#fankuixinxi').css('display')==='block'){
+					$('#introduction2').val("");
+				}
+			});
+			
+			$('.item1').click(
+				function(val){
+					if($(this).children()[1].innerText==='个人信息'){
+						window.location.href = "user.html";
+					}else if($(this).children()[1].innerText==='主页'){
+						window.location.href = "homepage.html";
+					}else if($(this).children()[1].innerText==='私信'){
+						window.location.href = "private_letter.html";
+					}
+					
+					if($(this).next().is(":hidden")){//如果二级导航没打开，打开它
+						$(this).next().show(500);
+						$(this).children('.you').css('transform','rotate(90deg)');//图片旋转90度
+					}
+					else if($(this).next().children().length==0){}//如果没有二级导航，没操作
+					else{//如果二级导航打开了，关闭它
+						$(this).next().hide(500)
+						$('.you').css('transform','rotate(0deg)');//图片回到原来样子
+					}	
+				}
+			);
+			
+			$('.item2').click(//点击二级标题触发事件
+			     function(val){
+					 if($(this).children()[0].innerText==='退出'){
+					 	window.localStorage.removeItem('username');
+					 	window.location.href = "index.html";
+					 }else if($(this).children()[0].innerText==='用户反馈'){
+						/*window.location.href = "jubaoyonghu.html"; */
+					 }
+				 }
+			);
+			$('.shiwu').click(function(){
+				if($(this).text()==='举报用户'){
+					$('#jubaoyonghu').css('display','block');
+					$('#fankuixinxi').css('display','none');
+				}else if($(this).text()==='反馈信息'){
+					$('#jubaoyonghu').css('display','none');
+					$('#fankuixinxi').css('display','block');
+				}
+			});
+			
+		});
+		
+	</script>
+</html>
+
+

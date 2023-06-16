@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>校园交友系统</title>
+		<script src="js/jquery-1.11.3.js"></script>
+		<style>
+			#zhuyemian{
+				width: 1000px;
+				height: 600px;
+				background-color: #ffffff;
+				border-radius:20px;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				margin: auto;
+				background-image: url(./img/封面.jpg);
+				background-size: cover;
+			}
+			#denglu{
+				width: 300px;
+				min-height: 300px;
+				box-shadow: 0  0  20px #bebebe;
+				border-radius:20px;
+				position: absolute;
+				right: 70px;
+				top: 25%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-color: #fff;
+				opacity: 0.8;
+			}
+			#biaodan tr{
+				height: 20px;
+			}
+			#shuruzhanghao{
+				display: none;
+				color: #ff0000;
+			}
+			#shurumima{
+				display: none;
+				color: #ff0000;
+			}
+			#zhanghao,#mima{
+				height: 25px;
+				width: 200px;
+				border: 0.5px solid #d6d6d6;		
+				background-color: #ffffff;
+				outline-color: #00ffff;
+			}
+			#dengluanniou{
+				z-index: 40;
+				position: relative;
+				width: 210px;
+				height:30px;
+				border-radius: 15px;
+				background-color: #007bff;
+				color: #fff;
+				border: none;
+			}
+			#dengluanniou:hover{
+				background-color: #0069d9;
+			}
+			.wangjimima,.lijizuce{
+				color: red;
+				text-decoration: none;
+			}
+			.lijizuce{
+				float: right;
+			}
+		</style>
+	</head>
+	<body style="background-color: #739fd9;">
+		<div id="zhuyemian">
+			<div id="denglu">
+				<form id="tijiao">
+					<h3>校园交友系统</h3>
+					<table id="biaodan">
+						<tr>
+							<td><input type="text" id="zhanghao" name="j_username" placeholder="账号/学生号"/></td>
+						</tr>
+						<tr>
+							<td id="shuruzhanghao">请输入账号</td>
+						</tr>
+						<tr>
+							<td><input type="password" id="mima" name="j_password" placeholder="密码"/></td>
+						</tr>
+						<tr>
+							<td id="shurumima">请输入密码</td>
+						</tr>
+					</table>
+					<input type="submit" id="dengluanniou" value="登录"/>
+					<p><a href="register.html" class="wangjimima">立即注册</a> <a href="administrators_index.html" class="lijizuce">管理员登录-></a></p>
+				</form>
+			</div>
+		</div>
+	</body>
+	<script src="js/denglu.js"></script>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>校园交友系统</title>
+		<script src="js/jquery-1.11.3.js"></script>
+		<style>
+			#zhuyemian{
+				width: 1000px;
+				height: 600px;
+				background-color: #ffffff;
+				border-radius:20px;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				margin: auto;
+				background-image: url(./img/封面.jpg);
+				background-size: cover;
+			}
+			#denglu{
+				width: 300px;
+				min-height: 350px;
+				box-shadow: 0  0  20px #bebebe;
+				border-radius:20px;
+				position: absolute;
+				right: 350px;
+				top: 20%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-color: #fff;
+				opacity: 0.8;
+			}
+			#biaodan tr{
+				height: 20px;
+			}
+			#shuruzhanghao,#shurumima,#shurumima2{
+				display: none;
+				color: #ff0000;
+			}
+			#zhanghao,#mima,#mima2{
+				height: 25px;
+				width: 200px;
+				border: 0.5px solid #d6d6d6;		
+				background-color: #ffffff;
+				outline-color: #00ffff;
+			}
+			#dengluanniou{
+				z-index: 40;
+				position: relative;
+				width: 210px;
+				height:30px;
+				border-radius: 15px;
+				background-color: #007bff;
+				color: #fff;
+				border: none;
+			}
+			#dengluanniou:hover{
+				background-color: #0069d9;
+			}
+			.wangjimima,.lijizuce{
+				color: red;
+				text-decoration: none;
+			}
+			.lijizuce{
+				float: right;
+			}
+		</style>
+	</head>
+	<body style="background-color: #739fd9;">
+		<div id="zhuyemian">
+			<div id="denglu">
+				<form id="tijiao">
+					<h3>校园交友系统</h3>
+					<table id="biaodan">
+						<tr>
+							<td><input type="text" id="zhanghao" name="j_username" placeholder="账号/学生号"/></td>
+						</tr>
+						<tr>
+							<td id="shuruzhanghao">请输入账号</td>
+						</tr>
+						<tr>
+							<td><input type="password" id="mima" name="j_password" placeholder="密码"/></td>
+						</tr>
+						<tr>
+							<td id="shurumima">请输入密码</td>
+						</tr>
+						<tr>
+							<td><input type="password" id="mima2" placeholder="确认密码"/></td>
+						</tr>
+						<tr>
+							<td id="shurumima2">请输入密码</td>
+						</tr>
+					</table>
+					<input type="submit" id="dengluanniou" value="注册"/>
+					<p><a href="index.html" class="wangjimima"><-用户登录</a> <a href="administrators_index.html" class="lijizuce">管理员登录-></a></p>
+				</form>
+			</div>
+		</div>
+	</body>
+	<script>
+		var jiekou=["http://10.161.5.8:5000","http://10.117.12.68:5000","http://10.151.17.97:5000","http://10.161.41.78:5000","http://10.161.14.216:5000"];
+		var jieI=0;
+		$(document).ready(function(){
+			$('#tijiao').on('submit', function (e) {
+				e.preventDefault();
+				/*console.log($('#zhanghao').val()); */
+				if($('#zhanghao').val()===""){
+					$('#shuruzhanghao').text("请输入账号");
+					$('#shuruzhanghao').css('display','block');
+					$('#zhanghao').css('border','1px solid #ff0000');
+				}else if($('#mima').val()===""){
+					$('#shurumima').css('display','block');
+					$('#mima').css('border','1px solid #ff0000');
+				}else if($('#mima2').val()===""){
+					$('#shurumima2').text("请再次输入密码");
+					$('#shurumima2').css('display','block');
+					$('#mima2').css('border','1px solid #ff0000');
+				}else{
+					if($('#zhanghao').val().length!==12){
+						$('#shuruzhanghao').text("请输入正确的账号");
+						$('#shuruzhanghao').css('display','block');
+						$('#zhanghao').css('border','1px solid #ff0000');
+					}else{
+						if($('#mima').val()===$('#mima2').val()){
+							$.ajax({
+								url:`${jiekou[jieI]}/register`,
+								method:"POST",
+								timeout:0,
+								headers:{
+									"Content-Type": "application/json"
+								},
+								data:JSON.stringify({
+									"j_username":$('#zhanghao').val(),
+									"j_password":$('#mima').val()
+								}),
+								success:function(res){
+									console.log(res);
+									if(res.message==='j_username already exists'){
+										$('#shuruzhanghao').text("账号已存在");
+										$('#shuruzhanghao').css('display','block');
+										$('#zhanghao').css('border','1px solid #ff0000');
+									}else{
+										window.location.href = "index.html";
+									}
+									/* var user=$('#zhanghao').val();
+									document.cookie = `j_username=${user}; expires=${new Date(new Date().getTime() + 7*24*60*60*1000).toGMTString()}`;
+									window.location.href = "zhuye.html"; */
+								}
+							});
+						}else{
+							$('#shurumima2').text("两次密码输入不一致");
+							$('#shurumima2').css('display','block');
+							$('#mima').css('border','1px solid #ff0000');
+							$('#mima2').css('border','1px solid #ff0000');
+						}
+					}
+				}
+			});
+		});
+		$('#zhanghao').click(function(){
+			$('#shuruzhanghao').css('display','none');
+			$('#zhanghao').css('border','0.5px solid #d6d6d6');
+		});
+		$('#mima').click(function(){
+			$('#shurumima').css('display','none');
+			$('#mima').css('border','0.5px solid #d6d6d6');
+		});
+		$('#mima2').click(function(){
+			$('#shurumima2').css('display','none');
+			$('#mima2').css('border','0.5px solid #d6d6d6');
+		});
+	</script>
+</html>

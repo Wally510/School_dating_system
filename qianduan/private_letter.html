@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>主页面</title>
+	</head>
+	<style>
+		body{
+			margin: 0;
+			padding: 0;
+			min-width: 100vw;
+			min-height: 100vh;
+		}
+		html::-webkit-scrollbar {
+		    display: none;
+		}
+		#shangdaohang{
+			position: fixed;
+			z-index: 100;
+			top: 0;
+			width: 100%;
+			height: 5%;
+			background-color: #0069d9;
+		}
+		.big_box{
+			position: absolute;
+			display: flex;
+			top: 5%;
+			width: 100%;
+		}
+		#xiaoyuanbeijing{
+			position: absolute;
+			width: 100%;
+			height: 70px;
+			background-image: url(./css/深圳技术大学.png);
+			background-size: cover;
+		}
+		.left_daohang{
+			position: fixed;
+			width: 10%;
+			height: 100vh;
+			min-width: 100px;/* 设置最小宽度防止文字被压缩 */
+			background-color: #ffffff;
+			overflow: auto;
+			
+		}
+		.left_daohang::-webkit-scrollbar {
+		    display: none;
+		}
+		
+		#konge{
+			vertical-align: middle;
+			text-align: center;
+		}
+		
+		.item1{
+			width: 100%;
+			height: 40px;
+			line-height: 80px;
+			display: flex;
+			justify-content: space-between;
+			cursor: pointer;
+		}
+		.item1:hover{
+			background-color: #e8e8e8;
+		}
+		.item1_text{
+			line-height: 40px;
+			width: 200px;
+			font-size: 10px;
+			overflow: hidden;/*超出隐藏*/
+			text-overflow: ellipsis;/*省略号*/
+			white-space: nowrap;/*设置文本不换行*/
+		}
+		.item1_img{
+			width: 150px;
+			height: 39px;
+			line-height: 40px;
+			position: relative;
+			display: inline-block;
+		}
+		.you{width: 30px;
+			height: 30px;
+			float: right;
+			background-size: 100% 100%;
+		}
+		.item1_item2{
+			cursor: pointer;
+			display: none;
+		}
+		.item2{
+			margin:20px auto;
+		}
+		.item2:hover{
+			background-color: #e6e6e6;
+		}
+		.item2_text{
+			font-size: 10px;
+			margin-left: 25%;
+		}
+		
+		.box_kuan{
+			position: fixed;
+			left: 10%;
+			width: 0.5%;
+			min-height: 100vh;
+			background-color: #e7e7e7;
+		}
+		/*右边框*/
+		.content{
+			position: fixed;
+			left: 10.5%;
+			width: 89.5%;
+			min-height: 100vh;
+			background-color: #f7f7f7;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+		}
+		
+		.logo{
+			position: relative;
+			z-index: 10;
+			height: 50px;
+			display: flex;
+		}
+		#sztulogo{
+			width: 40px;
+			height: 50px;
+			position: relative;
+			display: inline-block;
+		}
+		#sztu{
+			width: 23px;
+			height: 25px;
+			position: absolute;
+			top: 8px; 
+			right: 5px;
+		}
+		#xiaoyuan{
+			line-height: 40px;
+			font-size: 15px;
+			color: white;
+			overflow: hidden;/*超出隐藏*/
+			text-overflow: ellipsis;/*省略号*/
+			white-space: nowrap;/*设置文本不换行*/
+		}
+		#touxiang{
+			position: relative;
+			z-index: 10;
+			height: 50px;
+		}
+		.circle {
+		  border-radius: 50%;
+		  width: 40px;
+		  height: 40px;
+		  line-height: 40px;
+		  text-align: center;
+		  color: #ffffff;
+		  background-color: #b6b6b6;
+		}
+		.biaozhi{
+			width: 20px; 
+			height: 20px;
+			position: absolute;
+			top: 10px; 
+			right: 5px;
+		}
+		
+		/*各个页面*/
+		#sixin{
+			position: absolute;
+			top: 0px;
+			left: 11%;
+			width: 89%;
+			height: 750px;
+			
+		}
+		.geli{
+			position: relative;
+			width: 100%;
+			height: 5px;
+			background-color: #dfdfdf;
+		}
+		#haoyouxingxi{
+			position: fixed;
+			float: left;
+			top: 0px;
+			left: 11%;
+			width: 22%;
+			height: 100%;
+			background-color: #ffffff;
+			box-shadow: 5px 0 0 0 rgba(143, 143, 143, 0.2);
+		}
+		#sousuohaoyou{
+			position: relative;
+			width: 100%;
+			height: 100px;
+			
+		}
+		#sousuokuang2{
+			position: relative;
+			top: 50px;
+			left: 10%;
+			width: 80%;
+			height: 30px;
+			background-color: #ececec;
+			border: none;
+			border-radius: 3px;
+		}
+		#sixinxiaoxi{
+			width: 100%;
+			height: 40px;
+		}
+		.haoyou{
+			width: 100%;
+			height: 60px;
+			/* border: 1px solid black; */
+		}
+		.haoyou:hover{
+			background-color: #dfdfdf;
+		}
+		.haoyoutou{
+			position: relative;
+			top: 10px;
+			left: 5%;
+			width: 15%;
+			height: 40px;
+		}
+		.haoyouming{
+			position: relative;
+			top: -32px;
+			left: 25%;
+			width: 70%;
+			height: 20px;
+		}
+		.haoyoumingzi{
+			position: absolute;
+			float: left;
+			width: 50%;
+			height: 20px;
+			overflow: hidden;/*超出隐藏*/
+			text-overflow: ellipsis;/*省略号*/
+			white-space: nowrap;/*设置文本不换行*/
+			/* border: 1px solid black; */
+		}
+		.haoyoushi{
+			position: absolute;
+			float: right;
+			right: 0px;
+			width: 30%;
+			height: 20px;
+			font-size: 13px;
+			text-align:right;
+			line-height: 25px;
+			color: #8f8f8f;
+			overflow: hidden;/*超出隐藏*/
+			text-overflow: ellipsis;/*省略号*/
+			white-space: nowrap;/*设置文本不换行*/
+			/* border: 1px solid black; */
+		}
+		
+		.haoyoushuo{
+			position: relative;
+			top: -30px;
+			left: 25%;
+			width: 70%;
+			height: 20px;
+			/* border: 1px solid black; */
+		}
+		.haoyoushuohua{
+			position: absolute;
+			float: left;
+			width: 50%;
+			height: 20px;
+			font-size: 13px;
+			line-height: 25px;
+			color: #8f8f8f;
+			overflow: hidden;/*超出隐藏*/
+			text-overflow: ellipsis;/*省略号*/
+			white-space: nowrap;/*设置文本不换行*/
+			/* border: 1px solid black; */
+		}
+		.hongdian{
+			position: absolute;
+			float: right;
+			right: 0px;
+			width: 10%;
+			height: 20px;
+			overflow: hidden;/*超出隐藏*/
+			text-overflow: ellipsis;/*省略号*/
+			white-space: nowrap;/*设置文本不换行*/
+			/* border: 1px solid black; */
+		}
+		
+		#wodehaoyou{
+			position: relative;
+			width: 100%;
+			height: 600px;
+			background-color: #f7f7f7;
+		}
+		
+		#haoyouliaotian{
+			position: fixed;
+			float: left;
+			top: 6%;
+			left: 35%;
+			width: 63%;
+			height: 92%;
+			background-color: #f5f5f5;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+		}
+		#haoyoutouxiang{
+			width: 100%;
+			height: 60px;
+		}
+		#sixinyonghu{
+			position: relative;
+			top: 10px;
+			left: 20px;
+			/* border: 1px solid black; */
+		}
+		.sixinyonghu{
+			position: relative;
+			width: 96%;
+			height: 40px;
+			top: 10px;
+			left: 20px;
+			padding:0px 0px 20px 0px;
+			/* border: 1px solid black; */
+		}
+		.sixinneirong{
+			position: relative;
+			left: 20px;
+			float: left;
+			font-size: 15px;
+			min-width: 30px;
+			min-height: 40px;
+			line-height:40px;
+			padding: 0px 10px;
+			background-color: #ffffff;
+			border-radius: 5px;
+		}
+		.sixinneirong::before{
+			content: '';
+			width: 0;
+			height: 0;
+			border: 15px solid;
+			position: absolute;
+			bottom: 5px;
+			left: -29px;
+			border-color: transparent  #ffffff transparent transparent ;
+		}
+		.fasongyonghu{
+			position: relative;
+			width: 96%;
+			height: 40px;
+			top: 10px;
+			left: 20px;
+			padding:0px 0px 20px 0px;
+			/* border: 1px solid black; */
+		}
+		.fasongneirong{
+			position: relative;
+			right: 20px;
+			float: right;
+			font-size: 15px;
+			min-width: 30px;
+			min-height: 40px;
+			line-height:40px;
+			padding: 0px 10px;
+			background-color: #95ec69;
+			border-radius: 5px;
+		}
+		.fasongneirong::before{
+			content: '';
+			width: 0;
+			height: 0;
+			border: 15px solid;
+			position: absolute;
+			bottom: 5px;
+			right: -28px;
+			border-color: transparent transparent transparent #95ec69;
+		}
+		
+		#sixinxingming{
+			font-size: 30px;
+		}
+		#haoyousixin{
+			position: relative;
+			width: 100%;
+			height: 420px;
+			overflow: auto;
+			display: flex;
+			flex-direction: column-reverse;
+			/* border: 1px solid black; */
+		}
+		#haoyousixin::-webkit-scrollbar {
+			/* display: none; */
+			/*滚动条整体样式*/
+			width : 6px;  /*高宽分别对应横竖滚动条的尺寸*/
+			height: 10px;
+		}
+		#haoyousixin::-webkit-scrollbar-thumb {
+			/*滚动条里面小方块*/
+			border-radius: 10px;
+			box-shadow   : inset 0 0 5px rgba(0, 0, 0, 0.2);
+			background   : #cacaca;
+		}
+		#haoyousixin::-webkit-scrollbar-track {
+			display: none;
+			/*滚动条里面轨道*/
+			/* box-shadow   : inset 0 0 5px rgba(0, 0, 0, 0.2);
+			border-radius: 10px;
+			background   : #ededed; */
+		}
+		#fasongxingxi{
+			width: 100%;
+		}
+		#biaoqing{
+			width: 100%;
+			height: 30px;
+		}
+		#fasongkuang{
+			position: relative;
+			left: 5%;
+			width: 90%;
+			height: 110px;
+		}
+		#fasong{
+			position: relative;
+			float: right;
+			right: 5%;
+			width: 8%;
+			height: 30px;
+			color: #ffffff;
+			background-color: #000000;
+		}
+		#fasong:hover{
+			background-color: #505050;
+		}
+		.box{
+			position: fixed;
+			top: 620px;
+			right: 80px;
+			float: right;
+			min-width: 20px;
+			padding: 10px 10px;
+			margin-left: 100px;
+			background-color: #ffffff;
+			border-radius: 5px;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+			border: 1px solid #878787;
+		}
+		.box span{
+			width: 0;
+			height: 0;
+			position: absolute;
+			overflow: hidden;
+			font-size: 0;
+		}
+		.box .bot{
+			border-width: 15px;
+			border-style: solid dashed dashed;
+			border-color: #878787 transparent transparent;
+			right: 10px;
+			bottom: -29.5px;
+		}
+		.box .top{
+			border-width: 15px;
+			border-style: solid dashed dashed;
+			border-color: #fff transparent transparent;
+			right: 10px;
+			bottom: -29px;
+		}
+	</style>
+	<body>
+		<div id="shangdaohang">
+			<div class="logo">
+				<div id="sztulogo">
+					<img src="img/深圳技术大学logo.png" id="sztu"/>
+				</div>
+				<span id="xiaoyuan">校园交友系统</span>
+			</div>
+		</div>
+		<div class="big_box">
+			<div class="left_daohang">
+				<div id="xiaoyuanbeijing"></div>
+				<div class="logo"></div>
+				<div id="touxiang">
+					<div class="circle" style="margin: auto; background-color: #aaaaff;"></div>
+				</div>
+				<div id="konge">
+					<div id="yonghuming" style="font-size: 20px;">无</div>
+					<div id="yonghuxuehao" style="font-size: 10px;color: #55aaff;">无</div>
+				</div>
+				<div style="width: 100%;height: 30px;"></div>
+				<hr style="border: none;height: 1px; background: #55aaff;"/>
+				<!-- 第一块：一级标题1 -->
+				<div class="item1" name='1'>
+					<div class="item1_img1 item1_img" >
+						<img src="img/主页.png" class="biaozhi"/>
+					</div>
+					<span class="item1_text">主页</span>
+					<div class="you item1_img"></div>
+				</div>
+				<div class="item1_item2" >
+					
+				</div>
+				
+			<!-- 第二块：一级标题2 -->
+				<div class="item1">
+					<div class="item1_img2 item1_img">
+						<img src="img/个人信息.png" class="biaozhi"/>
+					</div>
+					<span class="item1_text">个人信息</span>
+					<div class="you item1_img"></div>
+				</div>
+				<div class="item1_item2">
+					
+				</div>
+				
+				<!-- 第三块：一级标题3 -->
+				<div class="item1">
+					<div class="item1_img3 item1_img">
+						<img src="img/私信.png" class="biaozhi"/>
+					</div>
+					<span class="item1_text">私信</span>
+					<div class="you item1_img"></div>
+				</div>
+				<div class="item1_item2">
+					
+				</div>
+				
+				<!-- 第三块：一级标题3 -->
+				<div class="item1">
+					<div class="item1_img3 item1_img">
+						<img src="img/设置.png" class="biaozhi"/>
+					</div>
+					<span class="item1_text">设置</span>
+					<div class="you item1_img"></div>
+				</div>
+				<div class="item1_item2">
+					<div class="item2">
+						<span class="item2_text">用户反馈</span>
+					</div>
+					<div class="item2">
+						<span class="item2_text">退出</span>
+					</div>
+				</div>
+			</div>
+			<div class="box_kuan"></div>
+			<div class="content"></div>
+			
+			<div id="sixin">
+				<div id="haoyouxingxi">
+					<div id="sousuohaoyou">
+						<input id="sousuokuang2" type="text" name="sousuo" placeholder="搜索"/>
+					</div>
+					<div class="geli"></div>
+					<div id="sixinxiaoxi">
+						私信消息
+					</div>
+					<div class="geli"></div>
+					<div id="wodehaoyou">
+						<!-- <div class="haoyou">
+							<div class="haoyoutou">
+								<div class="circle" style="background-color: #aaaaff;">张</div>
+								<div class="haoyouid" style="display: none;">202100203025</div>
+							</div>
+							<div class="haoyouming">
+								<div class="haoyoumingzi">张明燊</div>
+								<div class="haoyoushi"></div>
+							</div>
+							<div class="haoyoushuo">
+								<div class="haoyoushuohua"></div>
+								<div class="hongdian"></div>
+							</div>
+						</div> -->
+					</div>
+				</div>
+				
+				<div id="haoyouliaotian" style="display: none;">
+					<div id="haoyoutouxiang">
+						<div id="sixinyonghu">
+							<div class="circle" style="float: left;background-color: #aaaaff;">邬</div><div id="sixinxingming">邬仪林</div>
+						</div>
+					</div>
+					<div class="geli"></div>
+					<div id="haoyousixin">
+						<!-- <div class="sixinyonghu"><div class="circle" style="float: left;background-color: #aaaaff;">邬</div><div class="sixinneirong">你妈死了</div></div>
+						<div class="fasongyonghu"><div class="circle" style="float: right;background-color: #aaaaff;">邬</div><div class="fasongneirong">傻逼，你妈才死了</div></div> -->
+					</div>
+					<div class="geli"></div>
+					<div>
+						<div id="fasongxingxi">
+							<div id="biaoqing"></div>
+							<textarea id="fasongkuang" name="introduction" placeholder="请输入信息"></textarea>
+						</div>
+						<button id="fasong">发送</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="box" style="display: none;">
+			<span class="bot"></span>
+			<span class="top"></span>
+			不能发送空白信息。
+		</div>
+	</body>
+	<script src="js/jquery-1.11.3.js"></script>
+	
+	<script>
+		var shifoufasong=0;
+		var fasongname="";
+		var sixinname=[];
+		var username;
+		var jiekou=["http://10.161.5.8:5000","http://10.117.12.68:5000","http://10.151.17.97:5000","http://10.161.41.78:5000","http://10.161.14.216:5000"];
+		var jieI=0;
+		function ajaxtuijian(yonghu){
+			var ajaxtj;
+			$.ajax({
+				async:false,
+				url: /* http://10.161.18.188:5000/get_other_user_message */`${jiekou[jieI]}/get_other_user_message`,
+				method: "POST",
+				timeout: 0,
+				headers: {
+					"Content-Type": "application/json"
+				},
+				data:JSON.stringify({
+					"j_username":yonghu
+				}),
+				success:function(res){
+					ajaxtj = res.accounts;
+				},
+				error:function () {
+					alert("出错啦...");
+				}
+			});
+			return ajaxtj;
+		}
+		$(document).ready(function(){
+			$.ajax({
+				url: /*http://10.161.18.188:5000/get_message */`${jiekou[jieI]}/get_message`,
+				method: "GET",
+				timeout: 0,
+				headers: {
+					"Authorization": document.cookie.substring(11, 23)
+				},
+				success:function(res){
+					console.log(res);
+					var yh=res.accounts[0];
+					username=yh;
+					if(yh.name===null){
+						$('#yonghuming').text("无");
+					}else{
+						$('#yonghuming').text(yh.name);
+						$('#touxiang .circle').text(yh.name[0]);
+					}
+					if(yh.j_username===null){
+						$('#yonghuxuehao').text("无");
+					}else{
+						$('#yonghuxuehao').text(yh.j_username);
+					}
+					var pmlist=yh.pmlist.split(',');
+					console.log(pmlist);
+					for(var i=0;i<pmlist.length;i++){
+						var like=ajaxtuijian(pmlist[i]);
+						sixinname.push(like[0]);
+						console.log(like);
+						var sixinusername=`<div class="haoyou"><div class="haoyoutou"><div class="circle" style="background-color: #aaaaff;">${like[0].name[0]}</div></div><div class="haoyouming"><div class="haoyoumingzi">${like[0].name}</div><div class="haoyoushi"></div></div><div class="haoyoushuo"><div class="haoyoushuohua"></div><div class="hongdian"></div></div></div>`;
+						$('#wodehaoyou').append(sixinusername);
+					}
+				},
+				error:function () {
+					
+				}
+			});
+			
+			
+			$('.item1').click(
+				function(val){
+					if($(this).children()[1].innerText==='私信'){
+						
+					}else if($(this).children()[1].innerText==='主页'){
+						window.location.href = "homepage.html";
+					}else if($(this).children()[1].innerText==='个人信息'){
+						window.location.href = "user.html";
+					}
+					
+					if($(this).next().is(":hidden")){//如果二级导航没打开，打开它
+						$(this).next().show(500);
+						$(this).children('.you').css('transform','rotate(90deg)');//图片旋转90度
+					}
+					else if($(this).next().children().length==0){}//如果没有二级导航，没操作
+					else{//如果二级导航打开了，关闭它
+						$(this).next().hide(500)
+						$('.you').css('transform','rotate(0deg)');//图片回到原来样子
+					}	
+				}
+			);
+			
+			$('.item2').click(//点击二级标题触发事件
+			     function(val){
+					 if($(this).children()[0].innerText==='退出'){
+						window.localStorage.removeItem('username');
+						window.location.href = "index.html";
+					 }else if($(this).children()[0].innerText==='用户反馈'){
+						window.location.href = "feedback.html";
+					 }
+				 }
+			);
+			
+			$('#fasong').click(function(){
+				if($('#fasongkuang').val()===""){
+					$('#fasongkuang').val("");
+					$('.box').css('display','block');
+					setTimeout(function(){$('.box').css('display','none');},1000);
+				}else{
+					$.ajax({
+						async:false,
+						url:`${jiekou[jieI]}/send_pm`,
+						method: "POST",
+						timeout: 0,
+						headers: {
+							"Content-Type": "application/json",
+							"Authorization": document.cookie.substring(11, 23)
+						},
+						data:JSON.stringify({
+							"receiver":shifoufasong,
+							"content":$('#fasongkuang').val()
+						}),
+						success:function(res){
+							console.log(res);
+							$('#fasongkuang').val("");
+							/* $("#haoyousixin").animate({
+							    scrollTop: $('#haoyousixin').get(0).scrollHeight
+							}, 1000); */
+						},
+						error:function () {
+							
+						}
+					});
+				}
+			});
+		});
+		$('#wodehaoyou').on('click','.haoyou',function(){
+			$('#haoyouliaotian').css('display','none');
+			for(var i=0;i<sixinname.length;i++){
+				if($(this).find('.haoyoumingzi').text()===sixinname[i].name){
+					shifoufasong=sixinname[i].j_username;
+					fasongname=sixinname[i].name;
+					$('#sixinxingming').text(sixinname[i].name);
+					$('#sixinyonghu .circle').text(sixinname[i].name[0]);
+					$('#haoyouliaotian').css('display','block');
+					/* $("#haoyousixin").animate({
+					    scrollTop: $('#haoyousixin').get(0).scrollHeight
+					}, 1000); */
+					break;
+				}
+			}
+		});
+		
+		$(window).keydown(function(e){
+		    var curKey = e.which; 
+		    if(curKey == 13){
+				if(e.shiftKey){
+					
+				}else{
+					e.preventDefault();
+					$('#fasong').click();
+				}
+		    }
+		});
+		
+		function yhxinxi(user){
+			/*console.log(user); */
+			var xinxi="";
+			$.ajax({
+				async:false,
+				url:`${jiekou[jieI]}/get_pm`,
+				method: "POST",
+				timeout: 0,
+				headers: {
+					"Content-Type": "application/json",
+					"Authorization": document.cookie.substring(11, 23)
+				},
+				data:JSON.stringify({
+					"receiver":user
+				}),
+				success:function(res){
+					console.log(res);
+					var message=res.messages;
+					var l=message.length-1;
+					if(l>=0){
+						xinxi=message[l];
+					}
+				},
+				error:function () {
+					
+				}
+			});
+			return xinxi;
+		}
+		setInterval(function() {
+			var time=new Date();
+			var year1=time.getFullYear();
+			var month1=time.getMonth();
+			var date1=time.getDate();
+			var child1=$('#wodehaoyou').find('.haoyoushuohua');
+			var child2=$('#wodehaoyou').find('.haoyoushi');
+			for(var i=0;i<sixinname.length;i++){
+				var xinxi=yhxinxi(sixinname[i].j_username);
+				console.log(child1[i].innerText);
+				if(xinxi!==""){
+					child1[i].innerText=xinxi.content;
+					var year2=Number(xinxi.time.slice(0,4));
+					var month2=Number(xinxi.time.slice(5,7));
+					var date2=Number(xinxi.time.slice(8,10));
+					var daytime="";
+					/*console.log(month1);
+					console.log(month2);
+					if(month1===month2){
+						console.log('成功');
+					} */
+					if(year1===year2&&(month1+1)===month2&&date1===date2){
+						daytime=xinxi.time.slice(11,19);
+					}else{
+						daytime=`${year2}/${month2}/${date2}`;
+					}
+					/*console.log(date2); */
+					child2[i].innerText=daytime;
+				}
+			}
+			if(shifoufasong!==0){
+				$.ajax({
+					async:false,
+					url:`${jiekou[jieI]}/get_pm`,
+					method: "POST",
+					timeout: 0,
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": document.cookie.substring(11, 23)
+					},
+					data:JSON.stringify({
+						"receiver":shifoufasong
+					}),
+					success:function(res){
+						var parent=document.getElementById("haoyousixin");
+						var first = parent.firstElementChild; 
+						while (first) { 
+						    first.remove(); 
+						    first = parent.firstElementChild; 
+						} 
+						console.log(res);
+						var message=res.messages;
+						for(var i=(message.length-1);i>=0;i--){
+							if(message[i].sender===document.cookie.substring(11, 23)){
+								var fasong=`<div class="fasongyonghu"><div class="circle" style="float: right;background-color: #aaaaff;">${username.name[0]}</div><div class="fasongneirong">${message[i].content}</div></div>`;
+								$('#haoyousixin').append(fasong);
+							}else{
+								var sixin=`<div class="sixinyonghu"><div class="circle" style="float: left;background-color: #aaaaff;">${fasongname[0]}</div><div class="sixinneirong">${message[i].content}</div></div>`;
+								$('#haoyousixin').append(sixin);
+							}
+						}
+					},
+					error:function () {
+						
+					}
+				});
+			}
+		}, 500);
+	</script>
+</html>
+
